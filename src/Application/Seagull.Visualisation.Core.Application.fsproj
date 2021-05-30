@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Domain\Seagull.Visualisation.Core.Domain.fsproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="IRecentProjectsService.fs" />
+  </ItemGroup>
+
 </Project>

@@ -6,7 +6,7 @@ open PathLib
 /// The <see cref="Project"/> module defines all domain specific logic
 /// related to projects.
 /// </summary>
-module public Project =
+module internal Project =
     /// <summary>
     /// <see cref="Metadata"/> module defines the metadata of a project
     /// as well as related concepts.

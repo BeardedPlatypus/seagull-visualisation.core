@@ -5,12 +5,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="PathLib" Version="0.9.6" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Application\Seagull.Visualisation.Core.Application.fsproj" />
     <ProjectReference Include="..\Common\Seagull.Visualisation.Core.Common.fsproj" />
     <ProjectReference Include="..\Domain\Seagull.Visualisation.Core.Domain.fsproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Utilities\Json.fs" />
+    <Compile Include="AppDataRepository\IAppDataRepository.fs" />
+    <Compile Include="AppDataRepository\Json\AppDataRepositoryJson.fs" />
+    <Compile Include="RecentProjects\RecentProject.fs" />
+    <Compile Include="RecentProjects\RecentProjectServiceJson.fs" />
   </ItemGroup>
 
 </Project>

@@ -12,4 +12,8 @@
     <ProjectReference Include="..\Common\Seagull.Visualisation.Core.Common.fsproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="Project.fs" />
+  </ItemGroup>
+
 </Project>

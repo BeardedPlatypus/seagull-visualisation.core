@@ -4,4 +4,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="PathLib" Version="0.9.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Seagull.Visualisation.Core.Common.fsproj" />
+    <ProjectReference Include="..\Domain\Seagull.Visualisation.Core.Domain.fsproj" />
+  </ItemGroup>
+
 </Project>

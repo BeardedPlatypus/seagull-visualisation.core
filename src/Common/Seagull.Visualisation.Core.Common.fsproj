@@ -9,8 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Common\Seagull.Visualisation.Core.Common.fsproj" />
-    <ProjectReference Include="..\Domain\Seagull.Visualisation.Core.Domain.fsproj" />
+    <Compile Include="Path.fs" />
   </ItemGroup>
 
 </Project>

@@ -15,7 +15,9 @@
   <ItemGroup>
     <Compile Include="Project.fs" />
     <Compile Include="RecentProject.fs" />
-    <Compile Include="Application.fs" />
+    <Compile Include="Projects\ProjectVersion.fs" />
+    <Compile Include="Projects\Project.fs" />
+    <Compile Include="Projects\ProjectDescription.fs" />
   </ItemGroup>
 
 </Project>

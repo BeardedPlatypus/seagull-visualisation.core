@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+
+        <IsPackable>false</IsPackable>
+        <GenerateProgramFile>false</GenerateProgramFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="NUnit" Version="3.12.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+        <PackageReference Include="PathLib" Version="0.9.6" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="UnitTest1.fs" />
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\Application\Seagull.Visualisation.Core.Application.fsproj" />
+      <ProjectReference Include="..\..\src\Common\Seagull.Visualisation.Core.Common.fsproj" />
+      <ProjectReference Include="..\..\src\Domain\Seagull.Visualisation.Core.Domain.fsproj" />
+      <ProjectReference Include="..\..\src\Persistence\Seagull.Visualisation.Core.Persistence.fsproj" />
+    </ItemGroup>
+
+</Project>

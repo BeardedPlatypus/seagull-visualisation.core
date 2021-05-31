@@ -9,6 +9,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <InternalsVisibleToSuffix Include=".Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Common\Seagull.Visualisation.Core.Common.fsproj" />
     <ProjectReference Include="..\Domain\Seagull.Visualisation.Core.Domain.fsproj" />
   </ItemGroup>

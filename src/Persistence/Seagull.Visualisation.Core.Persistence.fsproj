@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <InternalsVisibleToSuffix Include=".Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="Utilities\Json.fs" />
     <Compile Include="AppDataRepository\IAppDataRepository.fs" />
     <Compile Include="AppDataRepository\Json\AppDataRepositoryJson.fs" />

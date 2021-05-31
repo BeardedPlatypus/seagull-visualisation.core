@@ -9,6 +9,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <InternalsVisibleToSuffix Include=".Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="Path.fs" />
   </ItemGroup>
 

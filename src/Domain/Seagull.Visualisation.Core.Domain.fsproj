@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <InternalsVisibleToSuffix Include=".Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="Project.fs" />
     <Compile Include="RecentProject.fs" />
     <Compile Include="Projects\ProjectVersion.fs" />

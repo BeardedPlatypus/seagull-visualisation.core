@@ -26,6 +26,7 @@
     <Compile Include="RecentProjects\RecentProject.fs" />
     <Compile Include="RecentProjects\RecentProjectServiceJson.fs" />
     <Compile Include="Projects\Project.fs" />
+    <Compile Include="Projects\ProjectJson.fs" />
     <Compile Include="Projects\ProjectServiceJson.fs" />
   </ItemGroup>
 

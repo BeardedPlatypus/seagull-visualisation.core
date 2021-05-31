@@ -4,7 +4,8 @@ open Seagull.Visualisation.Core.Application
 
 open PathLib
 
+[<Sealed>]
 type ProjectServiceJson () =
     interface IProjectService with
         member this.CreateProject(newProjectPath: IPath) : unit =
-            Project.createNewProject newProjectPath
+            ProjectJson.createNewProject newProjectPath

@@ -1,10 +1,8 @@
 ﻿namespace Seagull.Visualisation.Core.Persistence.Projects
 
 open Seagull.Visualisation.Core
-open Seagull.Visualisation.Core.Persistence.Utilities
-open PathLib
 
-module internal Project =
+module public Project =
     type Version =
         { Major : int
           Minor : int
@@ -17,7 +15,3 @@ module internal Project =
     type T =
         { Version : Version }
         
-    let createNewProject (path: IPath) : unit =
-        { Version = Version.FromDomain Domain.Projects.ProjectVersion.CurrentVersion }
-        |> Json.toObject
-        |> Json.writeObj path

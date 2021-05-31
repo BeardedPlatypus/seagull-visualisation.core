@@ -1,0 +1,14 @@
+{
+    "name": "com.beardedplatypus.seagull.visualisation.core",
+    "version": "0.1.0",
+    "displayName": "Seagull.Visualisation.Core",
+    "description": "Back-end logic of the Seagull.Visualisation application.",
+    "dependencies": {
+        "com.beardedplatypus.fsharp.core": "5.0.1",
+        "com.beardedplatypus.newtonsoft.json": "13.0.1",
+        "com.beardedplatypus.pathlib": "0.9.6"
+     },
+    "author": {
+      "name": "Maarten Tegelaers"
+    }
+  }

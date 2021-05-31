@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Compile Include="IRecentProjectsService.fs" />
+    <Compile Include="IProjectService.fs" />
   </ItemGroup>
 
 </Project>

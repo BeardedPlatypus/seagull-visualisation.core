@@ -1,4 +1,4 @@
-﻿namespace Seagull.Visualisation.Core.Persistence
+﻿namespace Seagull.Visualisation.Core.Persistence.RecentProjects
 
 open Seagull.Visualisation.Core
 open Seagull.Visualisation.Core.Persistence.AppDataRepository
@@ -7,7 +7,8 @@ open Seagull.Visualisation.Core.Persistence.RecentProjects
 /// <summary>
 /// Get the recent projects
 /// </summary>
-type RecentProjectServiceJson (appDataRepository: IAppDataRepository) =
+[<Sealed>]
+type public RecentProjectServiceJson (appDataRepository: IAppDataRepository) =
     let appDataRepository = appDataRepository
     
     let getRecentProjects () =

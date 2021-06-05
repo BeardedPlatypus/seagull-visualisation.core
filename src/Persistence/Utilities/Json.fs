@@ -26,12 +26,17 @@ module internal Json =
         JToken.FromObject obj
         
     let internal update<'T> (obj: JToken) (path: string) (value: 'T) : unit =
-        obj.Replace (JToken.FromObject value)
+        obj.SelectToken(path) 
+           .Replace (JToken.FromObject value)
 
     module internal Util =
         let internal splitLastSection (path: string) : string * string =
             let index = path.LastIndexOf "."
-            path.Substring(0, path.Length - index - 1), path.Substring(index)
+
+            if index >= 0 then
+                path.Substring(0, index), path.Substring(index)
+            else 
+                path, ""
 
         let rec internal addRec (obj: JObject) (path: string) (toAdd: JToken) : unit =
             if path.Length > 0 then 
@@ -39,14 +44,14 @@ module internal Json =
                 | Some v -> 
                     (v :?> JObject).Add toAdd
                 | None   ->  
-                    let newPath, toAddParent = splitLastSection path
+                    let toAddParent, newPath = splitLastSection path
 
                     let newToAdd = JObject()
                     newToAdd.Add(toAddParent, toAdd)
 
                     addRec obj newPath newToAdd
             else 
-                obj.Add toAdd
+                obj.Merge toAdd
 
     let internal add<'T> (obj: JToken) (path: string) (value: 'T) : unit =
         // Assumption: paths do not contain indices of arrays (e.g. SomeValue[0])
@@ -63,7 +68,7 @@ module internal Json =
     let internal writeObj (path: IPath) (obj: JToken) : unit =
         path.Parent().Mkdir true
         
-        use sw = new StreamWriter (path.Open FileMode.CreateNew)
+        use sw = new StreamWriter (path.Open FileMode.Create)
         use jsonWriter = new JsonTextWriter(sw)
         
         obj.WriteTo(jsonWriter)

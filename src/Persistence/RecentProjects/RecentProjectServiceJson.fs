@@ -28,22 +28,16 @@ type RecentProjectServiceJson (appDataRepository: IAppDataRepository) =
             match getRecentProjects () with
             | Result.Ok res  ->
                 res
-                |> Seq.filter (fun (v: RecentProject.T) -> v.Path <> rpValue.Path)
-                |> Seq.append [ rpValue ]
-                |> Seq.sortBy (fun v -> v.LastOpened)
+                |> RecentProject.updateRecentProjects rpValue
                 |> writeRecentProjects
             | Result.Error _ -> () 
         
         member this.RemoveRecentProject(recentProject) =
-            let path: string = recentProject.Path.ToString()
-            
+            let rpValue = RecentProject.T.FromDomain recentProject
+
             match getRecentProjects () with
             | Result.Ok res  ->
                 res
-                |> Seq.filter (fun (v: RecentProject.T) -> v.Path <> path)
+                |> RecentProject.removeRecentProject rpValue
                 |> writeRecentProjects
             | Result.Error _ -> () 
-        
-    
-    
-    

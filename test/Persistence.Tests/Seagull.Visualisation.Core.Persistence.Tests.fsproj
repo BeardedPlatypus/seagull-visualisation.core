@@ -19,6 +19,7 @@
 
     <ItemGroup>
         <Compile Include="TemporaryDirectory.fs" />
+        <Compile Include="RecentProjects\RecentProjectTest.fs" />
         <Compile Include="Projects\ProjectJsonTest.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>

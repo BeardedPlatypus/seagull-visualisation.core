@@ -17,7 +17,7 @@ type public RecentProjectServiceJson (appDataRepository: IAppDataRepository) =
     let writeRecentProjects (recentProjects: seq<RecentProject.T>) : unit =
         appDataRepository.Write RecentProject.Key recentProjects
         
-    interface Application.IRecentProjectsService with
+    interface Application.IRecentProjectService with
         member this.GetRecentProjects () = 
             getRecentProjects ()
             

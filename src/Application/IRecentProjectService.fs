@@ -7,7 +7,7 @@ open Seagull.Visualisation.Core.Domain
 /// and updating the recent projects.
 /// </summary>
 [<Interface>]
-type public IRecentProjectsService =
+type public IRecentProjectService =
     /// <summary>
     /// Get the collection of <see cref="RecentProject"/> objects currently
     /// stored in this application.

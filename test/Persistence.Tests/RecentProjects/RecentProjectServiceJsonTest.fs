@@ -35,7 +35,7 @@ type RecentProjectServiceJsonTest () =
         let appData = AppDataRepositoryJson(tempDir.Path)
         ( exampleJsonString |> writeTo ) appData.appDataPath
 
-        let service = RecentProjectServiceJson(appData) :> IRecentProjectsService
+        let service = RecentProjectServiceJson(appData) :> IRecentProjectService
 
 
         // Call
@@ -65,7 +65,7 @@ type RecentProjectServiceJsonTest () =
         use tempDir = new TemporaryDirectory()
 
         let appData = AppDataRepositoryJson(tempDir.Path)
-        let service = RecentProjectServiceJson(appData) :> IRecentProjectsService
+        let service = RecentProjectServiceJson(appData) :> IRecentProjectService
 
         let recentProject = Domain.RecentProject(tempDir.Path.Join "someRecentFile", System.DateTime.Now )
 
@@ -87,7 +87,7 @@ type RecentProjectServiceJsonTest () =
         let appData = AppDataRepositoryJson(tempDir.Path)
         ( emptyJsonString |> writeTo ) appData.appDataPath
 
-        let service = RecentProjectServiceJson(appData) :> IRecentProjectsService
+        let service = RecentProjectServiceJson(appData) :> IRecentProjectService
 
         let recentProject = Domain.RecentProject(tempDir.Path.Join "someRecentFile", System.DateTime.Now )
 
@@ -109,7 +109,7 @@ type RecentProjectServiceJsonTest () =
         let appData = AppDataRepositoryJson(tempDir.Path)
         ( irrelevantDataJsonString |> writeTo ) appData.appDataPath
 
-        let service = RecentProjectServiceJson(appData) :> IRecentProjectsService
+        let service = RecentProjectServiceJson(appData) :> IRecentProjectService
 
         let recentProject = Domain.RecentProject(tempDir.Path.Join "someRecentFile", System.DateTime.Now )
 
@@ -133,7 +133,7 @@ type RecentProjectServiceJsonTest () =
         let appData = AppDataRepositoryJson(tempDir.Path)
         ( exampleJsonString |> writeTo ) appData.appDataPath
 
-        let service = RecentProjectServiceJson(appData) :> IRecentProjectsService
+        let service = RecentProjectServiceJson(appData) :> IRecentProjectService
 
         let recentProjectNew = Domain.RecentProject(tempDir.Path.Join "someRecentFile", System.DateTime.Now )
 
@@ -169,7 +169,7 @@ type RecentProjectServiceJsonTest () =
         let appData = AppDataRepositoryJson(tempDir.Path)
         ( exampleJsonString |> writeTo ) appData.appDataPath
 
-        let service = RecentProjectServiceJson(appData) :> IRecentProjectsService
+        let service = RecentProjectServiceJson(appData) :> IRecentProjectService
 
         let recentProjectNew = Domain.RecentProject(Paths.Create "2.seagull", System.DateTime.Now )
 

@@ -5,22 +5,28 @@ open Seagull.Visualisation.Core.Persistence.Utilities
 
 type public AppDataRepositoryJson (appDataFolder: IPath) =
     let appDataPath: IPath = appDataFolder.Join ( PurePath.Create "AppData.json" )
-    
+
     interface IAppDataRepository with
-        member this.Query<'T>(key: string) =
-            try
+        member this.Query<'T> (key: string) (defaultValue: 'T) : 'T =
+            if appDataPath.Exists() then 
                 Json.getObject appDataPath
                 |> ( Json.query key )
-                |> ( Json.deserialize<'T> )
-                |> Result.Ok
-            with
-                | ex -> Result.Error ()
+                |> Option.map ( Json.deserialize<'T> )
+                |> Option.defaultValue defaultValue
+            else 
+               defaultValue
             
         member this.Write (key: string) (value: 'T) : unit =
             try 
-                let obj = Json.getObject appDataPath
-                (Json.query key obj).Replace (Json.toObject value )
+                let obj = 
+                    if appDataPath.Exists() then Json.getObject appDataPath
+                    else Json.emptyObj ()
+
+                match Json.query key obj with 
+                | Some v -> Json.update obj key value
+                | None   -> Json.add obj key value
+                
                 Json.writeObj appDataPath obj
             with
-               | ex -> ()
+               | _ -> ()
             

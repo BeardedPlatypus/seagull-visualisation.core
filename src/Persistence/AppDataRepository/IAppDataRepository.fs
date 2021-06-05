@@ -2,6 +2,6 @@
 
 [<Interface>]
 type public IAppDataRepository =
-    abstract member Query : key:string -> Result<'T, unit>
+    abstract member Query : key:string -> defaultValue:'T -> 'T
     abstract member Write : key:string -> value:'T -> unit
     

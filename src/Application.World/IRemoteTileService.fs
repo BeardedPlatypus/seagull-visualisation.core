@@ -6,6 +6,6 @@ open Seagull.Visualisation.Core.Domain.World
 type public IRemoteTileService = 
     inherit System.IDisposable
 
-    abstract member GetRemoteTile : Tile.Source -> Tile.Index -> Tile.Image
+    abstract member GetRemoteTile : source:Tile.Source -> index:Tile.Index -> Tile.Image
 
 

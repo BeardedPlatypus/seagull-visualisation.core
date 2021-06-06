@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application.World\Seagull.Visualisation.Core.Application.World.fsproj" />
+    <ProjectReference Include="..\Domain.World\Seagull.Visualisation.Core.Domain.World.fsproj" />
+  </ItemGroup>
+
+</Project>

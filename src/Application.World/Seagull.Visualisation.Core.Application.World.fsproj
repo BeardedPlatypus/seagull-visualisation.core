@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="ILocalTileService.fs" />
+    <Compile Include="IRemoteTileService.fs" />
+    <Compile Include="ITileService.fs" />
+    <Compile Include="TileService.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Domain.World\Seagull.Visualisation.Core.Domain.World.fsproj" />
   </ItemGroup>
 

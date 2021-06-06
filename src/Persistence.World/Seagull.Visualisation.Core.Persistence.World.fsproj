@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="LocalTileServiceImageSharp.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PathLib" Version="0.9.6" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Application.World\Seagull.Visualisation.Core.Application.World.fsproj" />
     <ProjectReference Include="..\Domain.World\Seagull.Visualisation.Core.Domain.World.fsproj" />
   </ItemGroup>

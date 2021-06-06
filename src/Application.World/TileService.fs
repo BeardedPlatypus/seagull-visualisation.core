@@ -6,6 +6,7 @@ open Seagull.Visualisation.Core.Domain.World
 /// <see cref="IRepository"/> defines the TileSource repository interface with
 /// which tiles can be retrieved and cached.
 /// </summary>
+[<Sealed>]
 type public TileService (localTileService: ILocalTileService, 
                          remoteTileService: IRemoteTileService,
                          sources: Tile.Source list) =
@@ -38,10 +39,7 @@ type public TileService (localTileService: ILocalTileService,
                 activeSource <- source
 
         member this.Dispose (): unit = 
-            if hasDisposed then 
-                ()
-            else
-                ( localTileService :> System.IDisposable ).Dispose()
+            if not hasDisposed then 
                 ( remoteTileService :> System.IDisposable ).Dispose()
 
                 ( hasDisposed <- true ) |> ignore

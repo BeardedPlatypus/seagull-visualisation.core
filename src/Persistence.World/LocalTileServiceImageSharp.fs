@@ -7,7 +7,7 @@ open Seagull.Visualisation.Core.Application.World
 open Seagull.Visualisation.Core.Domain.World
 
 [<Sealed>]
-type public RemoteTileServiceBruTile (repositoryRootPath: IPath) =
+type public LocalTileServiceImageSharp (repositoryRootPath: IPath) =
     let getTexturePath (tileSourceName: string) 
                        (index: Tile.Index)
                        (imageExtension: string): IPath =
@@ -16,7 +16,7 @@ type public RemoteTileServiceBruTile (repositoryRootPath: IPath) =
             if imageExtension.StartsWith(".") then imageExtension 
             else $".{imageExtension}"
         
-        repositoryRootPath.Join(tileSourceName, $"{index.ZoomLevel}", $"{index.X}_{index.Y}{imageExtension}")
+        repositoryRootPath.Join(tileSourceName, $"{index.ZoomLevel}", $"{index.X}", $"{index.Y}{imageExtension}")
 
     interface ILocalTileService with
         member this.GetLocalTile (source:Tile.Source) (index:Tile.Index) : Tile.Image Option =
@@ -37,7 +37,4 @@ type public RemoteTileServiceBruTile (repositoryRootPath: IPath) =
 
             use img = Image.Load(image.toBytes ())
             img.Save(texPath.ToString())
-
-
-
 

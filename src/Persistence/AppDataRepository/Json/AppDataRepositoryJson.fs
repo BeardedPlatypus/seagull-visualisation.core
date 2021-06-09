@@ -3,6 +3,7 @@
 open PathLib
 open Seagull.Visualisation.Core.Persistence.Utilities
 
+[<Sealed>]
 type public AppDataRepositoryJson (appDataFolder: IPath) =
     member internal this.appDataPath: IPath = appDataFolder.Join ( PurePath.Create "AppData.json" )
 

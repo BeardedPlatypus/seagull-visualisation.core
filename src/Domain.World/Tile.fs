@@ -6,6 +6,9 @@
 /// </summary>
 [<RequireQualifiedAccess>]
 module public Tile = 
+    /// <summary>
+    /// <see cref="Index"/> defines the index of a tile within a tile pyramid.
+    /// </summary>
     [<RequireQualifiedAccess>]
     [<Struct>]
     type public Index = 
@@ -14,8 +17,8 @@ module public Tile =
           ZoomLevel: int }
 
     /// <summary>
-    /// <see cref="Image"/> defines an image as used within the TileSource
-    /// library.
+    /// <see cref="Image"/> defines an image as used within the seagull 
+    /// application.
     /// </summary>
     type public Image = 
         | Image of byte[]
@@ -28,6 +31,9 @@ module public Tile =
         /// </returns>
         member self.toBytes () = match self with | Image b -> b
 
+    /// <summary>
+    /// <see cref="Source"/> defines an abstract tile image source.
+    /// </summary>
     type public Source =
         | Source of string
         member x.ToStringRepr () = match x with | Source s -> s

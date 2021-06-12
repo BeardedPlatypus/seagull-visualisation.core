@@ -7,7 +7,6 @@
   <ItemGroup>
     <Compile Include="LocalBehaviourNone.fs" />
     <Compile Include="LocalBehaviourImageSharp.fs" />
-    <Compile Include="LocalTileServiceImageSharp.fs" />
   </ItemGroup>
 
   <ItemGroup>

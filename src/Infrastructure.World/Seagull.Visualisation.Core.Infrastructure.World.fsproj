@@ -7,7 +7,6 @@
   <ItemGroup>
     <Compile Include="RemoteBehaviourNone.fs" />
     <Compile Include="RemoteBehaviourBruTile.fs" />
-    <Compile Include="RemoteTileServiceBruTile.fs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,6 +4,7 @@
 /// <see cref="ITileSourceRepository"/> defines the interface with
 /// which to retrieve tiles from a single source.
 /// </summary>
+[<Interface>]
 type public ITileSourceRepository =
     inherit System.IDisposable
 
@@ -15,7 +16,7 @@ type public ITileSourceRepository =
     /// A sequence of tile source names available within this 
     /// <see cref="ITileSourceRepository"/>.
     /// </summary>
-    abstract member RetrieveTileSourceKeys : TileSourceKey seq
+    abstract member RetrieveTileSourceKeys : unit -> TileSourceKey seq
 
     /// <summary>
     /// Retrieve the tile source associated with the specified 

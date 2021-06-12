@@ -10,6 +10,7 @@
     <Compile Include="TileSourceKey.fs" />
     <Compile Include="TileSource.fs" />
     <Compile Include="ITileSourceRepository.fs" />
+    <Compile Include="TileSourceRepository.fs" />
     <Compile Include="ILocalTileService.fs" />
     <Compile Include="IRemoteTileService.fs" />
     <Compile Include="ITileService.fs" />

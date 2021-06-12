@@ -1,5 +1,7 @@
 ﻿namespace Seagull.Visualisation.Core.Application.World
 
+open Seagull.Visualisation.Core.Domain.World
+
 /// <summary>
 /// <see cref="ITileSource"/> defines the interface with
 /// which to retrieve tiles from a single source.
@@ -7,7 +9,9 @@
 [<Sealed>]
 type public TileSource (name: string, 
                         minZoom: int, 
-                        maxZoom: int) = 
+                        maxZoom: int, 
+                        localBehaviour: ILocalBehaviour,
+                        remoteBehaviour: IRemoteBehaviour) = 
     let mutable hasDisposed = false
 
     /// <summary>
@@ -36,9 +40,21 @@ type public TileSource (name: string,
     /// The tile image as a byte array.
     /// </returns>
     member this.RetrieveTile (x: int) (y: int) (zoomLevel: int) : byte[] =
-        Array.empty
+        let index = { Tile.Index.X = x; Tile.Index.Y = y; Tile.Index.ZoomLevel = zoomLevel }
+
+        match localBehaviour.RetrieveTile index with 
+        | Some v -> 
+            v.toBytes()
+        | None ->
+            let img = remoteBehaviour.RetrieveTile index
+            localBehaviour.StoreTile index img
+
+            img.toBytes()
 
     interface System.IDisposable with
-        member this.Dispose() = ()
+        member this.Dispose() = 
+            if not hasDisposed then
+                remoteBehaviour.Dispose()
+                hasDisposed <- true
 
         

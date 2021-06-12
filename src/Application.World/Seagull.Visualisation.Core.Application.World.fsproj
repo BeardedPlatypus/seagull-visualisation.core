@@ -5,6 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="TileSourceKey.fs" />
+    <Compile Include="ITileSource.fs" />
+    <Compile Include="ITileSourceRepository.fs" />
     <Compile Include="ILocalTileService.fs" />
     <Compile Include="IRemoteTileService.fs" />
     <Compile Include="ITileService.fs" />

@@ -27,18 +27,3 @@ type public ITileSourceRepository =
     /// </exception>
     abstract member RetrieveTileSource : key:TileSourceKey -> TileSource
 
-    /// <summary>
-    /// Add <paramref name="source"/> to this <see cref="ITileSourceRepository"/>.
-    /// </summary>
-    /// <param name="source">The tile source to add.</param>
-    abstract member AddTileSource : source:TileSource -> unit
-
-    /// <summary>
-    /// Remove the tile source associated with <paramref name="key"/>.
-    /// </summary>
-    /// <param name="key">The key of the tile source to remove.</param>
-    /// <remarks>
-    /// if key is not in RetrieveTileSourceKeys, nothing will happen.
-    /// </remarks
-    abstract member RemoveTileSource : key:TileSourceKey -> unit
-

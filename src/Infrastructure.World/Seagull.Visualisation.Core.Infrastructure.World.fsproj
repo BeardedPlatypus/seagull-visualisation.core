@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="RemoteBehaviourNone.fs" />
     <Compile Include="RemoteTileServiceBruTile.fs" />
   </ItemGroup>
 

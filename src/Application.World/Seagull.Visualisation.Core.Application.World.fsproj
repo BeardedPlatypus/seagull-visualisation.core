@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Compile Include="ILocalBehaviour.fs" />
+    <Compile Include="IRemoteBehaviour.fs" />
     <Compile Include="TileSourceKey.fs" />
     <Compile Include="TileSource.fs" />
     <Compile Include="ITileSourceRepository.fs" />

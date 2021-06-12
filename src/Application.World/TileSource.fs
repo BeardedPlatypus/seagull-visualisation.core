@@ -4,23 +4,26 @@
 /// <see cref="ITileSource"/> defines the interface with
 /// which to retrieve tiles from a single source.
 /// </summary>
-type public ITileSource =
-    inherit System.IDisposable
+[<Sealed>]
+type public TileSource (name: string, 
+                        minZoom: int, 
+                        maxZoom: int) = 
+    let mutable hasDisposed = false
 
     /// <summary>
     /// Gets the name of this <see cref="ITileSource"/>
     /// </summary>
-    abstract member Name : string with get
+    member val Name : string = name with get
 
     /// <summary>
     /// Gets the minimum zoom of this <see cref="ITileSource"/>
     /// </summary>
-    abstract member MinZoom : int with get
+    member val MinZoom : int = minZoom with get
 
     /// <summary>
     /// Gets the maximum zoom of this <see cref="ITileSource"/>
     /// </summary>
-    abstract member MaxZoom : int with get
+    member val MaxZoom : int = maxZoom with get
 
     /// <summary>
     /// Retrieve the terrain tile at (<paramref name="x"/>, <paramref name="y"/>) with
@@ -32,5 +35,10 @@ type public ITileSource =
     /// <returns>
     /// The tile image as a byte array.
     /// </returns>
-    abstract member RetrieveTile : x: int -> y: int -> zoomLevel: int -> byte[]
+    member this.RetrieveTile (x: int) (y: int) (zoomLevel: int) : byte[] =
+        Array.empty
 
+    interface System.IDisposable with
+        member this.Dispose() = ()
+
+        

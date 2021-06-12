@@ -25,13 +25,13 @@ type public ITileSourceRepository =
     /// <exception cref=System.ArgumentException>
     /// NOT (<paramref name="key"/> IN RetrieveTileSourceKeys)
     /// </exception>
-    abstract member RetrieveTileSource : key:TileSourceKey -> ITileSource
+    abstract member RetrieveTileSource : key:TileSourceKey -> TileSource
 
     /// <summary>
     /// Add <paramref name="source"/> to this <see cref="ITileSourceRepository"/>.
     /// </summary>
     /// <param name="source">The tile source to add.</param>
-    abstract member AddTileSource : source:ITileSource -> unit
+    abstract member AddTileSource : source:TileSource -> unit
 
     /// <summary>
     /// Remove the tile source associated with <paramref name="key"/>.

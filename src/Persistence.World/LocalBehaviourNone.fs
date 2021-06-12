@@ -8,7 +8,7 @@ open Seagull.Visualisation.Core.Application.World
 /// to always return none.
 /// </summary>
 [<Sealed>]
-type public LocalBehaviourNone =
+type public LocalBehaviourNone () =
     interface ILocalBehaviour with 
         member _.RetrieveTile (_: Tile.Index) : Tile.Image Option = 
             None

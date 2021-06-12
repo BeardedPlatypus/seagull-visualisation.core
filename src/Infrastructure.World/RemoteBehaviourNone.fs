@@ -8,7 +8,7 @@ open Seagull.Visualisation.Core.Application.World
 /// to raise a not supported exception.
 /// </summary>
 [<Sealed>]
-type public RemoteBehaviourNone =
+type public RemoteBehaviourNone () =
     interface IRemoteBehaviour with 
         member _.RetrieveTile (_: Tile.Index) : Tile.Image = 
             raise <| System.NotSupportedException($"Cannot retrieve tiles with a {nameof(RemoteBehaviourNone)}")

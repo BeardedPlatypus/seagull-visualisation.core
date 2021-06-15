@@ -6,3 +6,6 @@
 
 Seagull.Visualisation.Core is the back-end of the [Seagull-Visualisation Application](https://github.com/BeardedPlatypus/seagull-visualisation). It provides logic to handle visualisation-independent concepts.
 
+# Attribution
+
+- Seagull Icon made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>

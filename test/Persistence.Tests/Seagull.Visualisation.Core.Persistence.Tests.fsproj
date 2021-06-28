@@ -12,7 +12,7 @@
         <PackageReference Include="FsUnit" Version="4.0.4" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
         <PackageReference Include="NUnit" Version="3.13.2" />
-        <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
         <PackageReference Include="PathLib" Version="0.9.6" />
     </ItemGroup>
@@ -30,6 +30,10 @@
       <ProjectReference Include="..\..\src\Common\Seagull.Visualisation.Core.Common.fsproj" />
       <ProjectReference Include="..\..\src\Domain\Seagull.Visualisation.Core.Domain.fsproj" />
       <ProjectReference Include="..\..\src\Persistence\Seagull.Visualisation.Core.Persistence.fsproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Update="FSharp.Core" Version="5.0.2" />
     </ItemGroup>
 
 </Project>

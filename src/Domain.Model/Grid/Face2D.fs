@@ -6,7 +6,7 @@
 /// </summary>
 /// <remarks>
 /// <see cref="Indices"/> are expected to be distinct and in counter-clockwise 
-/// order.
+/// order. It should be of size three or greater.
 /// </remarks>
 [<Sealed>]
 type public Face2D (indices: seq<int>) =

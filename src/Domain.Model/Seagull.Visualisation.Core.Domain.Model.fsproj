@@ -9,6 +9,7 @@
     <Compile Include="Grid\Edge2D.fs" />
     <Compile Include="Grid\Face2D.fs" />
     <Compile Include="Grid\Extents.fs" />
+    <Compile Include="IMesh1D.fs" />
   </ItemGroup>
 
   <ItemGroup>

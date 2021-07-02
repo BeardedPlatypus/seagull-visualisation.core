@@ -1,4 +1,4 @@
-﻿namespace Seagull.Visualisation.Core.Domain.Model
+﻿namespace Seagull.Visualisation.Core.Domain.Model.Grid
 
 /// <summary>
 /// <see cref="Face2D"/> defines a two-dimensional face, where the indices

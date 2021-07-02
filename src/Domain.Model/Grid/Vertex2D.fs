@@ -1,4 +1,4 @@
-﻿namespace Seagull.Visualisation.Core.Domain.Model
+﻿namespace Seagull.Visualisation.Core.Domain.Model.Grid
 
 /// <summary>
 /// <see cref="Vertex2D"/> defines a two dimensional vertex consisting of a x 

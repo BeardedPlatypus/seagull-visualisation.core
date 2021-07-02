@@ -1,4 +1,4 @@
-﻿namespace Seagull.Visualisation.Core.Domain.Model
+﻿namespace Seagull.Visualisation.Core.Domain.Model.Grid
 
 /// <summary>
 /// <see cref="Edge2D"/> defines a two-dimensional edge, where the indices

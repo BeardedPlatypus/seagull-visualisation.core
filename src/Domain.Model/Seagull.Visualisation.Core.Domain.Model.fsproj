@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Grid\Vertex2D.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Update="FSharp.Core" Version="5.0.2" />
   </ItemGroup>
 

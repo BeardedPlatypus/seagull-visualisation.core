@@ -8,6 +8,7 @@
     <Compile Include="Grid\Vertex2D.fs" />
     <Compile Include="Grid\Edge2D.fs" />
     <Compile Include="Grid\Face2D.fs" />
+    <Compile Include="Grid\Extents.fs" />
   </ItemGroup>
 
   <ItemGroup>

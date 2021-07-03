@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="IModelRepository.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Domain.Model\Seagull.Visualisation.Core.Domain.Model.fsproj" />
   </ItemGroup>
 

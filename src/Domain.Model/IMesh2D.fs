@@ -5,7 +5,7 @@
 /// vertices (nodes) and faces consisting of three or more vertices.
 /// </summary>
 [<Interface>]
-type public IMeshD =
+type public IMesh2D =
     /// <summary>
     /// Retrieve the name of this <see cref="IMesh2D"/>.
     /// </summary>

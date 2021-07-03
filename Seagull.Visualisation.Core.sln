@@ -39,6 +39,8 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Seagull.Visualisation.Core.
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Seagull.Visualisation.Core.Application.Model", "src\Application.Model\Seagull.Visualisation.Core.Application.Model.fsproj", "{F8B73B5E-0CEF-43D2-BB74-F3F4EB76BF17}"
 EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Seagull.Visualisation.Core.Persistence.Model", "src\Persistence.Model\Seagull.Visualisation.Core.Persistence.Model.fsproj", "{CB52A0E8-59EA-4353-80A3-D63F1A4B5348}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,6 +91,10 @@ Global
 		{F8B73B5E-0CEF-43D2-BB74-F3F4EB76BF17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8B73B5E-0CEF-43D2-BB74-F3F4EB76BF17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8B73B5E-0CEF-43D2-BB74-F3F4EB76BF17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB52A0E8-59EA-4353-80A3-D63F1A4B5348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB52A0E8-59EA-4353-80A3-D63F1A4B5348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB52A0E8-59EA-4353-80A3-D63F1A4B5348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB52A0E8-59EA-4353-80A3-D63F1A4B5348}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -110,6 +116,7 @@ Global
 		{B636BCB9-E943-4ABB-8F11-3A4D7614FE2E} = {5F18E0A3-0CB0-4B8C-878D-CEEA0E5F5CCB}
 		{FB93E8F8-44B6-44FA-86EE-15F72241E3AD} = {E94A7F5E-B6F1-40B5-A141-8823C4A8D16A}
 		{F8B73B5E-0CEF-43D2-BB74-F3F4EB76BF17} = {3ECD7D4D-405F-4DAE-A8DC-7622C3562B83}
+		{CB52A0E8-59EA-4353-80A3-D63F1A4B5348} = {5F18E0A3-0CB0-4B8C-878D-CEEA0E5F5CCB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E3DBDBE-6520-4898-8329-84897FE3EE30}

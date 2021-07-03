@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="NetCDF\UGrid.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Functional.NetCDF" Version="0.1.0" />
     <PackageReference Include="PathLib" Version="0.9.6" />
   </ItemGroup>

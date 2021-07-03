@@ -6,6 +6,11 @@
 
   <ItemGroup>
     <Compile Include="IModelRepository.fs" />
+    <Compile Include="IModelRepositoryCreationStrategy.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PathLib" Version="0.9.6" />
   </ItemGroup>
 
   <ItemGroup>

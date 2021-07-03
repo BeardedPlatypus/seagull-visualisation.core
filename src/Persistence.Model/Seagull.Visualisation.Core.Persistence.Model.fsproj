@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Functional.NetCDF" Version="0.1.0" />
+    <PackageReference Include="PathLib" Version="0.9.6" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Application.Model\Seagull.Visualisation.Core.Application.Model.fsproj" />
     <ProjectReference Include="..\Domain.Model\Seagull.Visualisation.Core.Domain.Model.fsproj" />
   </ItemGroup>

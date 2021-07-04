@@ -68,3 +68,35 @@ module internal UGrid =
 
                 result <- edges
 
+    [<Sealed>]
+    type internal RetrieveFacesQuery (meshID: VariableID) = 
+         let mutable result : seq<Grid.Face2D> = Seq.empty
+
+         member val Result = result with get
+
+         interface IQuery with 
+            member this.Execute (repository: IRepository) : unit = 
+                let faceVariable: string = (repository.RetrieveVariableAttribute (meshID, "face_node_connectivity")).Values
+                                           |> Seq.head
+                let faceData = repository.RetrieveVariableValue(faceVariable)
+                let startingIndex: int = (repository.RetrieveVariableAttribute(faceVariable, "start_index")).Values
+                                         |> Seq.head
+                let fillValue: int = (repository.RetrieveVariableAttribute (meshID, "_FillValue")).Values
+                                     |> Seq.head
+                let maxFaceSize: int = faceData.Shape |> Seq.item 1
+
+                let buildFace (indices: seq<int>) : Grid.Face2D =
+                     let interpretedIndices =
+                         indices 
+                         |> Seq.filter (fun i -> i <> fillValue)
+                         |> Seq.map (fun i -> i - startingIndex)
+
+                     Grid.Face2D(interpretedIndices)
+
+                let faces = 
+                    faceData.Values
+                    |> Seq.windowed maxFaceSize
+                    |> Seq.map buildFace
+
+                result <- faces
+

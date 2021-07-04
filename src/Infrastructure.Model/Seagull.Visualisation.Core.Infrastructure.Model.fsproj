@@ -5,9 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="SRID.csv" />
+    <Compile Include="CoordinateSystemTransformationService.fs" />
+  </ItemGroup>
+
+  <ItemGroup />
+
+  <ItemGroup>
     <PackageReference Include="GeoAPI.CoordinateSystems" Version="1.7.5" />
     <PackageReference Include="GeoAPI.Core" Version="1.7.5" />
     <PackageReference Include="ProjNET4GeoAPI" Version="1.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application.Model\Seagull.Visualisation.Core.Application.Model.fsproj" />
   </ItemGroup>
 
   <ItemGroup>

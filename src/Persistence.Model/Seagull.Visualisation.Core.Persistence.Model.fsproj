@@ -9,6 +9,7 @@
     <Compile Include="NetCDF\Mesh2D.fs" />
     <Compile Include="NetCDF\UGrid.fs" />
     <Compile Include="NetCDF\ModelRepositoryNetCDF.fs" />
+    <Compile Include="NetCDF\ModelRepositoryCreationStrategyNetCDF.fs" />
   </ItemGroup>
 
   <ItemGroup>

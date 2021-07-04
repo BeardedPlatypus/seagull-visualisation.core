@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Compile Include="NetCDF\Mesh1D.fs" />
+    <Compile Include="NetCDF\Mesh2D.fs" />
     <Compile Include="NetCDF\UGrid.fs" />
   </ItemGroup>
 

@@ -8,6 +8,8 @@
     <Compile Include="IModelRepository.fs" />
     <Compile Include="IModelRepositoryCreationStrategy.fs" />
     <Compile Include="ModelRepositoryFactory.fs" />
+    <Compile Include="EPSGCode.fs" />
+    <Compile Include="ICoordinateSystemTransformationService.fs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,6 +4,7 @@ open BeardedPlatypus.Functional.NetCDF
 open PathLib
 
 open Seagull.Visualisation.Core.Domain.Model
+open Seagull.Visualisation.Core.Application.Model
 
 /// <summary>
 /// The <see cref="UGrid"/> module provides common methods to
@@ -15,7 +16,8 @@ module internal UGrid =
         Service.Query (path.ToString (), query)
 
     [<Sealed>]
-    type internal RetrieveVerticesQuery (meshID: VariableID) = 
+    type internal RetrieveVerticesQuery (meshID: VariableID,
+                                         transformCoordinateSystem: EPSGCode -> (double * double) -> (double * double)) = 
         let mutable result : seq<Grid.Vertex2D> = Seq.empty
 
         let getVertexVariableNames (repository: IRepository) : string[] =
@@ -36,17 +38,31 @@ module internal UGrid =
             let coordinateVariableName = Array.find isCoordinateData variableNames
             (repository.RetrieveVariableValue(coordinateVariableName)).Values
 
+        let getCoordinateSystem (repository: IRepository) : EPSGCode =
+            // Assumption: netcdf files only contain a single coordinate system
+            // We assume all files contain such a coordinate system, this is however false
+            // this should be replaced with a try get variable attribute when it becomes available.
+            let coordinateSystemID = 
+                (repository.RetrieveVariableAttribute("projected_coordinate_system", "epsg")).Values
+                |> Seq.head
+
+            EPSGCode(coordinateSystemID)
+
         member val Result = result with get
 
         interface IQuery with
             member this.Execute (repository: IRepository) : unit = 
                 let vertexVariableNames = getVertexVariableNames repository
+                let coordinateSystem = getCoordinateSystem repository
 
                 let xVertexData = getCoordinateData repository "projection_x_coordinate" vertexVariableNames
                 let yVertexData = getCoordinateData repository "projection_y_coordinate" vertexVariableNames
 
-                // TODO add conversion here
-                let vertices = Seq.map2 (fun x y -> Grid.Vertex2D(x, y)) xVertexData yVertexData
+                let toVertex (x: double) (y: double): Grid.Vertex2D =
+                    let (actualX: double, actualY: double) = transformCoordinateSystem coordinateSystem (x, y)
+                    Grid.Vertex2D(actualX, actualY)
+
+                let vertices = Seq.map2 toVertex xVertexData yVertexData
                 result <- vertices
 
     [<Sealed>]
@@ -103,14 +119,15 @@ module internal UGrid =
                 result <- faces
 
     [<Sealed>]
-    type internal RetrieveMeshesQuery (netCDFPath: IPath) = 
+    type internal RetrieveMeshesQuery (netCDFPath: IPath,
+                                       transformCoordinateSystem: EPSGCode -> (double * double) -> (double * double)) = 
         let getDimensionMesh (repository: IRepository) (meshID: VariableID): int =
             (repository.RetrieveVariableAttribute (meshID, "topology_dimension")).Values
             |> Seq.head
 
         let retrieveVertices (meshID: VariableID): unit -> seq<Grid.Vertex2D> = 
             fun () -> 
-                let query = RetrieveVerticesQuery meshID
+                let query = RetrieveVerticesQuery (meshID, transformCoordinateSystem)
                 executeQuery netCDFPath query
                 query.Result
 

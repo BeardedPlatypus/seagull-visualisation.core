@@ -47,3 +47,24 @@ module internal UGrid =
                 let vertices = Seq.map2 (fun x y -> Grid.Vertex2D(x, y)) xVertexData yVertexData
                 result <- vertices
 
+    [<Sealed>]
+    type internal RetrieveEdgesQuery (meshID: VariableID) = 
+         let mutable result : seq<Grid.Edge2D> = Seq.empty
+
+         member val Result = result with get
+
+         interface IQuery with 
+            member this.Execute (repository: IRepository) : unit = 
+                let edgeVariable: string = (repository.RetrieveVariableAttribute (meshID, "edge_node_connectivity")).Values
+                                           |> Seq.head
+                let edgeData = repository.RetrieveVariableValue(edgeVariable)
+                let startingIndex: int = (repository.RetrieveVariableAttribute(edgeVariable, "start_index")).Values
+                                         |> Seq.head
+
+                let edges = 
+                    edgeData.Values
+                    |> Seq.pairwise
+                    |> Seq.map (fun (a, b) -> Grid.Edge2D(a - startingIndex, b - startingIndex))
+
+                result <- edges
+

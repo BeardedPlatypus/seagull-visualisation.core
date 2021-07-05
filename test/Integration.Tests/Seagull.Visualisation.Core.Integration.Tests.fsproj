@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FsUnit" Version="4.0.4" />
     <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
@@ -17,7 +18,7 @@
     <None Include="test-data\map.nc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Compile Include="UnitTest1.fs" />
+    <Compile Include="LoadMapFileTest.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

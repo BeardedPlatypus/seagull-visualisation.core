@@ -1,4 +1,4 @@
-﻿namespace Seagull.Visualisation.Core.Infrastructure.Model
+namespace Seagull.Visualisation.Core.Infrastructure.Model
 
 open System.IO
 open System.Reflection
@@ -13,7 +13,7 @@ type public CoordinateSystemTransformationService() =
 
     let coordinateSystemMapping: Map<EPSGCode, string> = 
         let assembly = Assembly.GetExecutingAssembly ()
-        let resourceName ="SRID.csv"
+        let resourceName ="Seagull.Visualisation.Core.Infrastructure.Model.SRID.csv"
 
         use stream: Stream = assembly.GetManifestResourceStream(resourceName)
         use reader: StreamReader = new StreamReader(stream)

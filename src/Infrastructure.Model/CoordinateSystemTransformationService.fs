@@ -1,4 +1,4 @@
-namespace Seagull.Visualisation.Core.Infrastructure.Model
+﻿namespace Seagull.Visualisation.Core.Infrastructure.Model
 
 open System.IO
 open System.Reflection
@@ -51,7 +51,11 @@ type public CoordinateSystemTransformationService() =
                             (fromCoordinateSystem: EPSGCode)
                             (x: double, y: double):
                             double * double =
-            let transformation = getTransformation toCoordinateSystem fromCoordinateSystem
-            let values: double[] = transformation.MathTransform.Transform([| x; y |])
-            (values.[0], values.[1])
+            if (coordinateSystemMapping.ContainsKey toCoordinateSystem &&
+                coordinateSystemMapping.ContainsKey fromCoordinateSystem) then
+                let transformation = getTransformation toCoordinateSystem fromCoordinateSystem
+                let values: double[] = transformation.MathTransform.Transform([| x; y |])
+                (values.[0], values.[1])
+            else
+                (x, y)
             

@@ -14,7 +14,7 @@ type internal Mesh2D (name: string,
             queryVertices ()
  
         member this.RetrieveEdges (): seq<Grid.Edge2D> = 
-            queryEdges()
+            queryEdges ()
  
         member this.RetrieveFaces (): seq<Grid.Face2D> = 
             queryFaces ()

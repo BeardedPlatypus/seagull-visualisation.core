@@ -18,7 +18,7 @@ module internal UGrid =
     [<Sealed>]
     type internal RetrieveVerticesQuery (meshID: VariableID,
                                          transformCoordinateSystem: EPSGCode -> (double * double) -> (double * double)) = 
-        let mutable result : seq<Grid.Vertex2D> = Seq.empty
+        let mutable result : Grid.Vertex2D list = List.empty
 
         let getVertexVariableNames (repository: IRepository) : string[] =
             let vertexVariableAttribute: string = 
@@ -48,7 +48,7 @@ module internal UGrid =
 
             EPSGCode(coordinateSystemID)
 
-        member val Result = result with get
+        member this.Result = result |> Seq.ofList
 
         interface IQuery with
             member this.Execute (repository: IRepository) : unit = 
@@ -62,61 +62,72 @@ module internal UGrid =
                     let (actualX: double, actualY: double) = transformCoordinateSystem coordinateSystem (x, y)
                     Grid.Vertex2D(actualX, actualY)
 
-                let vertices = Seq.map2 toVertex xVertexData yVertexData
+                let vertices = Seq.map2 toVertex xVertexData yVertexData |> List.ofSeq
                 result <- vertices
+
+    let private chunkify<'T> (size: int) (elems: 'T seq) : 'T list list = 
+        let folder (elem: 'T) (accSmall: 'T list, accTotal: 'T list list ) : 'T list * 'T list list =
+            if List.length accSmall = size then 
+                ( [ elem ], accSmall :: accTotal )
+            else 
+                ( elem :: accSmall, accTotal )
+        
+        let accSmall, accTotal = Seq.foldBack folder elems ([], [])
+        accSmall :: accTotal
 
     [<Sealed>]
     type internal RetrieveEdgesQuery (meshID: VariableID) = 
-         let mutable result : seq<Grid.Edge2D> = Seq.empty
+         let mutable result : Grid.Edge2D list = List.empty
 
-         member val Result = result with get
+         member this.Result = result |> Seq.ofList
 
          interface IQuery with 
             member this.Execute (repository: IRepository) : unit = 
                 let edgeVariable: string = (repository.RetrieveVariableAttribute (meshID, "edge_node_connectivity")).Values
                                            |> Seq.head
-                let edgeData = repository.RetrieveVariableValue(edgeVariable)
+                let edgeData = repository.RetrieveVariableValue<int32>(edgeVariable)
                 let startingIndex: int = (repository.RetrieveVariableAttribute(edgeVariable, "start_index")).Values
                                          |> Seq.head
 
                 let edges = 
                     edgeData.Values
-                    |> Seq.pairwise
-                    |> Seq.map (fun (a, b) -> Grid.Edge2D(a - startingIndex, b - startingIndex))
+                    |> chunkify 2
+                    |> Seq.map (fun [a; b] -> Grid.Edge2D(a - startingIndex, b - startingIndex))
+                    |> List.ofSeq
 
-                result <- edges
+                result <- edges 
 
     [<Sealed>]
     type internal RetrieveFacesQuery (meshID: VariableID) = 
-         let mutable result : seq<Grid.Face2D> = Seq.empty
+         let mutable result : Grid.Face2D list = List.empty
 
-         member val Result = result with get
+         member this.Result = result |> Seq.ofList
 
          interface IQuery with 
             member this.Execute (repository: IRepository) : unit = 
                 let faceVariable: string = (repository.RetrieveVariableAttribute (meshID, "face_node_connectivity")).Values
                                            |> Seq.head
-                let faceData = repository.RetrieveVariableValue(faceVariable)
+                let faceData = repository.RetrieveVariableValue<int32>(faceVariable)
                 let startingIndex: int = (repository.RetrieveVariableAttribute(faceVariable, "start_index")).Values
                                          |> Seq.head
-                let fillValue: int = (repository.RetrieveVariableAttribute (meshID, "_FillValue")).Values
+                let fillValue: int = (repository.RetrieveVariableAttribute (faceVariable, "_FillValue")).Values
                                      |> Seq.head
                 let maxFaceSize: int = faceData.Shape |> Seq.item 1
 
-                let buildFace (indices: seq<int>) : Grid.Face2D =
+                let buildFace (indices: int list) : Grid.Face2D =
                      let interpretedIndices =
                          indices 
-                         |> Seq.filter (fun i -> i <> fillValue)
-                         |> Seq.map (fun i -> i - startingIndex)
+                         |> List.filter (fun i -> i <> fillValue)
+                         |> List.map (fun i -> i - startingIndex)
 
                      Grid.Face2D(interpretedIndices)
 
                 let faces = 
                     faceData.Values
-                    |> Seq.windowed maxFaceSize
-                    |> Seq.map buildFace
+                    |> chunkify maxFaceSize
+                    |> List.map buildFace
 
-                result <- faces
+                result <- faces 
 
     [<Sealed>]
     type internal RetrieveMeshesQuery (netCDFPath: IPath,
@@ -153,11 +164,11 @@ module internal UGrid =
             Mesh2D(name, retrieveVertices meshID, retrieveEdges meshID, retrieveFaces meshID)
             :> IMesh2D
 
-        let mutable meshes1D: seq<IMesh1D> = Seq.empty
-        let mutable meshes2D: seq<IMesh2D> = Seq.empty
+        let mutable meshes1D: IMesh1D list = List.empty
+        let mutable meshes2D: IMesh2D list = List.empty
 
-        member val Meshes1D: seq<IMesh1D> = meshes1D with get
-        member val Meshes2D: seq<IMesh2D> = meshes2D with get
+        member this.Meshes1D: seq<IMesh1D> = meshes1D |> Seq.ofList
+        member this.Meshes2D: seq<IMesh2D> = meshes2D |> Seq.ofList
 
 
         interface IQuery with 
@@ -167,9 +178,9 @@ module internal UGrid =
                 for (dim, ids) in meshIds |> Seq.groupBy (getDimensionMesh repository) do
                     match dim with 
                     | 1 -> 
-                        meshes1D <- Seq.map (createMesh1D repository) ids
+                        meshes1D <- ( Seq.map (createMesh1D repository) ids ) |> List.ofSeq
                     | 2 -> 
-                        meshes2D <- Seq.map (createMesh2D repository) ids
+                        meshes2D <- ( Seq.map (createMesh2D repository) ids ) |> List.ofSeq
                     | _ ->
                         ()
 

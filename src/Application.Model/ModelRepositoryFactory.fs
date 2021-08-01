@@ -28,7 +28,7 @@ type public ModelRepositoryFactory (strategies: seq<IModelRepositoryCreationStra
     /// <remarks>
     /// <paramref name="path"/> is expected to be a valid path which exists on the
     /// file system.
-    /// </remarks
+    /// </remarks>
     member this.CanCreateFor (path: IPath): bool = 
         strategies |> List.exists (canCreateFor path)
 

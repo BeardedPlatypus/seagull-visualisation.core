@@ -24,7 +24,7 @@ type public IModelRepositoryCreationStrategy =
     /// <remarks>
     /// <paramref name="path"/> is expected to be a valid path which exists on the
     /// file system.
-    /// </remarks
+    /// </remarks>
     /// <remarks>
     /// This method is expected to be called more than the <see cref="Create"/>
     /// function, as such it should be fast.

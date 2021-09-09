@@ -39,8 +39,4 @@ type LoadMapFileTest () =
 
         let faces = mesh2D.RetrieveFaces () |> List.ofSeq
         faces |> List.length |> should equal 25
-        
-
-
-
 

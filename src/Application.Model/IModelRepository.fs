@@ -13,7 +13,7 @@ type public IModelRepository =
     /// </summary>
     /// <returns>
     /// A collection of one-dimensional meshes contained in this
-    /// <see cref="IModelRepository/>
+    /// <see cref="IModelRepository"/>
     /// </returns>
     abstract member RetrieveMeshes1D: unit -> seq<IMesh1D>
 
@@ -22,7 +22,7 @@ type public IModelRepository =
     /// </summary>
     /// <returns>
     /// A collection of two-dimensional meshes contained in this
-    /// <see cref="IModelRepository/>
+    /// <see cref="IModelRepository"/>
     /// </returns>
     abstract member RetrieveMeshes2D: unit -> seq<IMesh2D>
 

@@ -15,7 +15,7 @@ type public ITileSourceRepository =
     /// <returns>
     /// A sequence of tile source names available within this 
     /// <see cref="ITileSourceRepository"/>.
-    /// </summary>
+    /// </returns>
     abstract member RetrieveTileSourceKeys : unit -> TileSourceKey seq
 
     /// <summary>
@@ -23,7 +23,7 @@ type public ITileSourceRepository =
     /// <paramref name="key"/>.
     /// </summary>
     /// <param name="key">The key of the tile source.</param>
-    /// <exception cref=System.ArgumentException>
+    /// <exception cref="System.ArgumentException">
     /// NOT (<paramref name="key"/> IN RetrieveTileSourceKeys)
     /// </exception>
     abstract member RetrieveTileSource : key:TileSourceKey -> TileSource

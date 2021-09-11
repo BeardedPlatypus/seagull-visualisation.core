@@ -21,7 +21,6 @@ type public ILocalBehaviour =
     /// <summary>
     /// Store the <paramref name="image"/> defined by the <paramref name="index"/>.
     /// </summary>
-    /// <param name="source">The source from which the image was obtained.</param>
     /// <param name="index">The index of the tile to store.</param>
     /// <param name="image">The image of the tile to store.</param>
     abstract member StoreTile : index:Tile.Index -> image:Tile.Image -> unit

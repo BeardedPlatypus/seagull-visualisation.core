@@ -9,7 +9,7 @@
     "com.beardedplatypus.brutile": "3.1.3",
     "com.beardedplatypus.imagesharp": "1.0.3",
     "com.beardedplatypus.projnet4geoapi": "1.4.1",
-    "com.beardedplatypus.functional.netcdf": "0.1.1"
+    "com.beardedplatypus.functional.netcdf": "0.1.2"
   },
   "author": {
     "name": "Maarten Tegelaers"
